@@ -15,10 +15,10 @@ $ npm install
 ## Starting Notification API via npm
 
 ``` bash
-// for linux
+# for linux
 $ PORT=80  npm start
 
-// for window
+# for window
 $ set PORT=80 & npm start
 ```
 
