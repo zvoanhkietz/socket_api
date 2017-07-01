@@ -1,12 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
+var uuid = require('uuid');
 
 /* authenticate. */
 router.post('/authenticate', function (req, res, next) {
     var user = {
         username: (req.body.username || req.query.username),
-        password: (req.body.password || req.query.password)
+        password: (req.body.password || req.query.password),
+        appid: uuid.v4()
     };
 
     // create a token
@@ -17,6 +19,7 @@ router.post('/authenticate', function (req, res, next) {
     res.json({
         success: true,
         message: 'Enjoy your token!',
+        appid: user.appid,
         token: token
     });
 });

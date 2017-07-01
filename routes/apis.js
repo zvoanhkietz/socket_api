@@ -27,10 +27,13 @@ router.use(function (req, res, next) {
 
 /* api notification */
 router.post('/v1/notification/emit', function (req, res, next) {
-    var appId = req.body.appId || req.query.appId;
-    var users = req.body.users || req.query.users;
-    emitter.get('emit.notification').emit(appId, users, req.body);
-    res.json({status: "OK"});
+    var appId = req.decoded.appid;
+    if (appId) {
+        var users = req.body.users || req.query.users || null;
+        emitter.get('emit.notification').emit(appId, users, req.body);
+        return res.json({status: "OK"});
+    }
+    return res.json({status: "NG"});
 });
 
 module.exports = router;

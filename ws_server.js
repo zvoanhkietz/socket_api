@@ -6,15 +6,19 @@ function SocketServer(server) {
     // on connection
     _io.on('connection', (socket) => {
         socket.on('lisenApp', (data) => {
-            var username = data.username;
-            var roomId = data.appId;
-            socket.username = username;
-            socket.room = roomId;
-            socket.join(roomId);
-            _clients[username] = {
-                socketId: socket.id,
-                roomId: roomId
-            };
+            var username = data.username || null;
+            var roomId = data.appId || null;
+            if (!username || !roomId) {
+                socket.emit('error', {message: 'Invalid appid and username'});
+            } else {
+                socket.username = username;
+                socket.room = roomId;
+                socket.join(roomId);
+                _clients[username] = {
+                    socketId: socket.id,
+                    roomId: roomId
+                };
+            }
         });
     });
 
