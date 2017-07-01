@@ -61,13 +61,14 @@ Client (index.html)
 ## Client using API push a notification
 For example: I'm using jQuery
 ```js
+var token = "eyJhbGciO...";
 // specify user to notify
-$.post('http://localhost/api/v1/notification/emit?appId=1234&users[]=aaaa', {data: [{a:1}, {a:2}]}, (res) => {
+$.post('http://localhost/api/v1/notification/emit?appId=1234&users[]=aaaa&token=' + token, {data: [{a:1}, {a:2}]}, (res) => {
   console.log(res);
 });
 
-// broacast all of user in app
-$.post('http://localhost/api/v1/notification/emit?appId=1234', {data: [{a:1}, {a:2}]}, (res) => {
+// broadcast all of users in app
+$.post('http://localhost/api/v1/notification/emit?appId=1234&token=' + token, {data: [{a:1}, {a:2}]}, (res) => {
   console.log(res);
 });
 ```
