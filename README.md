@@ -62,11 +62,11 @@ For example I'm using jquery
 var token = "eyJhbGciO...";
 // specify user to notify
 $.post('http://localhost/api/v1/notification/emit?appId=1234&users[]=aaaa&token=' + token, {data: [{a:1}, {a:2}]}, (res) => {
-  console.log(res);
+     console.log(res);
 });
 
 // broadcast all of users in app
 $.post('http://localhost/api/v1/notification/emit?appId=1234&token=' + token, {data: [{a:1}, {a:2}]}, (res) => {
-  console.log(res);
+     console.log(res);
 });
 ```
