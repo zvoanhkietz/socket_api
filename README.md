@@ -1,8 +1,8 @@
 # Notification API
-Api notification using websocket.io to notify.
-You can send message by http request or websocket
+Using websocket.io to notify a message.
+You can also send a message by using http request or websocket
 
-## Installing Notification API via npm
+## Installing via npm
 
 You can install Notification API into your project using
 [npm](https://www.npmjs.com/). For existing applications you can run the following:
@@ -12,7 +12,7 @@ $ git clone git@github.com:zvoanhkietz/socket_api.git
 $ npm install
 ```
 
-## Starting Notification API via npm
+## Running via npm
 
 ``` bash
 # for linux
@@ -22,7 +22,7 @@ $ PORT=80  npm start
 $ set PORT=80 & npm start
 ```
 
-## Get token
+## Get a token to authenticate
 
 1. Request:
 ```
@@ -39,15 +39,13 @@ URL: /users/authenticate?username=username&password=1234
 }
 ```
 
-## Client waiting a notification
+## Clients are waiting a notification
 
 Client (index.html)
 ```html
 <script src="{cdn}/socket.io/socket.io.js"></script>
 <script>
-  var socket = io('http://localhost');
   var socket = io.connect('http://localhost');
-
   socket.on('connect', function(){
       socket.emit('lisenApp', {appId: 1234, username: 'aaaa'});
   });
@@ -58,8 +56,8 @@ Client (index.html)
 </script>
 ```
 
-## Client using API push a notification
-For example: I'm using jQuery
+## Client using the http request to push a notification
+For example I'm using jquery
 ```js
 var token = "eyJhbGciO...";
 // specify user to notify
