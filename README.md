@@ -35,6 +35,7 @@ URL: /users/authenticate?username=username&password=1234
 {
    success: true,
    message: "Enjoy your token!",
+   appid: "47172c10-a50b-4830-bfe4-57aa91d31756",
    token: "eyJhbGciO..."
 }
 ```
@@ -47,7 +48,7 @@ Client (index.html)
 <script>
   var socket = io.connect('http://localhost');
   socket.on('connect', function(){
-      socket.emit('lisenApp', {appId: 1234, username: 'aaaa'});
+      socket.emit('lisenApp', {appId: "47172c10-a50b-4830-bfe4-57aa91d31756", username: 'aaaa'});
   });
   
   socket.on('updateInfo', (data) => {
