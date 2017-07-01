@@ -11,8 +11,7 @@ router.post('/authenticate', function (req, res, next) {
         appid: uuid.v4()
     };
     
-    // TODO: using DB or API to check user exist HERE
-    // modelUser.isExist(user);
+    // TODO: using DB or API to check login
 
     // create a token
     var token = jwt.sign(user, req.app.get('superSecret'), {
